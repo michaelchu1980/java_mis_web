@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<sql-statements>
+  <sql name="getWMSBordHeader">
+    <![CDATA[select a.ORG_NAME,a.TOTAL_COUNT,a.MORNING_COUNT,a.AFTERNOON_COUNT,a.ACTUAL_ACCOUNT,
+a.EXFACTORY_ACCOUNT,a.WAITING_ACCOUNT,a.SHORTAGE_ACCOUNT from mis_job_trucking_count_v a
+union all 
+   SELECT 'Total', sum(TOTAL_COUNT)total_count,sum(MORNING_COUNT)MORNING_COUNT,
+          sum(AFTERNOON_COUNT)AFTERNOON_COUNT,sum(ACTUAL_ACCOUNT)ACTUAL_ACCOUNT,sum(EXFACTORY_ACCOUNT),sum(WAITING_ACCOUNT),
+          sum(SHORTAGE_ACCOUNT)
+  FROM mis_job_trucking_count_v]]>
+    <!--edit by martin 2017.8.10都要去掉-->
+  </sql>
+
+
+
+
+</sql-statements>

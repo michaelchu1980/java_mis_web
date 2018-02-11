@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+
+<link href="Content/jqueryEasyui/themes/default/easyui.css"
+	rel="stylesheet" type="text/css" />
+<link href="Content/jqueryEasyui/themes/ui-cupertino/menu.css"
+	rel="stylesheet" type="text/css" />
+<link href="Content/jqueryEasyui/themes/color.css" rel="stylesheet"
+	type="text/css" />
+<link href="Content/jqueryEasyui/themes/icon.css" rel="stylesheet"
+	type="text/css" />
+<script src="Content/js/jquery-2.1.1.min.js" type="text/javascript"></script>
+<script src="Content/jqueryEasyui/jquery.easyui.min.js"
+	type="text/javascript"></script>
+<script type="text/javascript">
+
+    $(function(){
+        grid_bound();
+        })
+
+    function grid_bound(){
+    	   $('#grid_summary_list').datagrid({
+    	 iconCls: 'icon-edit',
+         singleSelect: true,
+         method: 'get',
+         pagination: true,
+         pageSize:20,
+         rownumbers: true,
+         fitColumns: false,
+         striped:true,
+         //multiSort:true,
+         url: 'http://localhost:8080/mis_web/cadlog',
+         columns:[[
+        	  { field: 'UPDATE_DATE', width: 150, title: 'UPDATE DATE', sortable:true },
+        	   { field: 'HOST_GROUP', width: 150, title: 'HOST_GROUP', sortable:true },
+        	   { field: 'PC', width: 100, title: 'PC', sortable:true },
+        	   { field: 'USER_ID', width: 100, title: 'USER ID', sortable:true },
+        	   { field: 'USER_NAME', width: 100, title: 'NAME', sortable:true },
+        	   { field: 'USER_OFFICE', width: 150, title: 'OFFICE', sortable:true },
+        	   { field: 'LOGCONTENT', width: 800, title: 'Log Content', sortable:true },
+             ]]
+    	   })
+        }
+    </script>
+<title>Insert title here</title>
+</head>
+<body>
+	<!-- <form action="http://localhost:8080/mis_web/login" method=post>
+<input type=submit>
+
+</form> -->
+	<input id="test" class="easyui-textbox">
+	<table id="grid_summary_list" class="easyui-datagrid"
+		data-options="collapsible:true"
+		style="border-color: aquamarine; height: 760px; padding-top: 60px;"
+		UpdateDate" sortOrder="asc" remoteSort="false">
+	</table>
+</body>
+</html>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-modules id="moduleCoreId" project-version="1.5.0">
+	<wb-module deploy-name="mis_web">
+		<wb-resource deploy-path="/" source-path="/WebContent"
+			tag="defaultRootSource" />
+		<wb-resource deploy-path="/WEB-INF/classes" source-path="/src" />
+		<property name="java-output-path" value="/mis_web/build/classes" />
+		<property name="context-root" value="mis_web" />
+	</wb-module>
+</project-modules>

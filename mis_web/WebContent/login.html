@@ -1,0 +1,120 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+    <meta charset="utf-8"> 
+      <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1"> 
+    <title>esayui信息管理系统</title> 
+    <link href="Content/jqueryEasyui/themes/default/easyui.css" rel="stylesheet" type="text/css" />
+    <link href="Content/jqueryEasyui/themes/ui-cupertino/menu.css" rel="stylesheet" type="text/css" />
+    <link href="Content/jqueryEasyui/themes/color.css" rel="stylesheet" type="text/css" />
+    <link href="Content/jqueryEasyui/themes/icon.css" rel="stylesheet" type="text/css" />
+    <!--<link href="~/Content/uploadify/uploadify.css" rel="stylesheet" type="text/css" />-->
+    <script src="js/jquery-2.1.1.min.js" type="text/javascript"></script>
+    <script src="Content/jqueryEasyui/jquery.easyui.min.js" type="text/javascript"></script>
+
+    <link href="pages/css/base.css" rel="stylesheet">
+    <link href="pages/css/login/login.css" rel="stylesheet">
+    <script type="text/javascript">
+        $(function(){
+            document.onkeydown = function (e) {
+                if (!e) e = window.event;
+                if ((e.keyCode || e.which) == 13) {
+                    document.getElementById("loginBtn").focus();
+                    document.getElementById("loginBtn").click();
+                }
+            }
+        })
+        function login() {
+           var url = 'http://localhost:8080/mis_web/checkLogin';
+            $.ajax({
+                type: 'get',
+                dataType: 'text',
+                url: 'http://localhost:8080/mis_web/checkLogin?action=login&loginName=' + $("#login_name").val()+'&loginPwd='+$("#login_password").val(),
+                success: function (data) {
+                    var result = eval("("+data+")");  //字符串转json
+                    if (result.success) {
+                        if (url.indexOf("ReturnUrl=") != -1) {
+                            window.location.href = decodeURIComponent(url.substring(url.indexOf("ReturnUrl=") + 10));
+                        }
+                        else {
+                            window.location.href = "index_new.html";
+                        }
+                    } else {
+                        alert("提示"+ result.msg);
+                        $('#loginBtn').linkbutton('enable');
+                   
+                    }
+                }
+            })
+        }
+    </script>
+
+</head> 
+<body>
+	<div class="login-hd">
+		<div class="left-bg"></div>
+		<div class="right-bg"></div>
+		<div class="hd-inner">
+			<!--<span class="logo"></span>-->
+           System Name
+		</div>
+	</div>
+	<div class="login-bd">
+		<div class="bd-inner">
+			<div class="inner-wrap">
+				<div class="lg-zone">
+					<div class="lg-box">
+						<div class="lg-label"><h4>Login</h4></div>
+						<div class="alert alert-error">
+			              <i class="iconfont">&#xe62e;</i>
+			              <span>Please Login</span>
+			            </div>
+						<form>
+							<div class="lg-username input-item clearfix">
+								<i class="iconfont">&#xe60d;</i>
+								<input id="login_name" type="text" placeholder="please put your account">
+							</div>
+							<div class="lg-password input-item clearfix">
+								<i class="iconfont">&#xe634;</i>
+								<input id="login_password" type="password" placeholder="please input your password">
+							</div>
+						<!--	<div class="lg-check clearfix">
+								<div class="input-item">
+									<i class="iconfont">&#xe633;</i>
+									<input type="text" placeholder="验证码">
+								</div>
+								<span class="check-code">XD34F</span>
+							</div>-->
+							<div class="tips clearfix">
+								<label><input type="checkbox" checked="checked">Remember User</label>
+							<!--	<a href="javascript:;" class="register">立即注册</a>
+								<a href="javascript:;" class="forget-pwd">忘记密码？</a>-->
+							</div>
+							<div >
+								<a id="loginBtn" href="javascript:void(0)" class="easyui-linkbutton"  style="width: 120px; font-size: 16px; height: 25px;margin-left:35px; font-family:'Microsoft YaHei'" onClick="login()">
+                                 <font style="font-size:16px;color:black">  Login </font> 
+
+								</a>
+								<!--<a href="javascript:;" class="supplier" onClick="javascript:window.location='main.html'">供应商登录</a>-->
+							</div>
+						</form>
+					</div>
+				</div>
+				<div class="lg-poster"></div>
+			</div>
+		</div>
+	</div>
+	<div class="login-ft">
+		<div class="ft-inner">
+	
+			<div class="address">Copyright TTi@2017</div>
+			
+		</div>
+	</div>
+</body> 
+</html>
+    
+<script type="text/javascript">
+
+</script>
