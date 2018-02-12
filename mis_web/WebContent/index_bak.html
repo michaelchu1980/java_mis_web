@@ -30,6 +30,7 @@
          rownumbers: true,
          fitColumns: false,
          striped:true,
+         fit:true,
          //multiSort:true,
          url: 'http://localhost:8080/mis_web/cadlog',
          columns:[[
@@ -46,16 +47,23 @@
     </script>
 <title>Insert title here</title>
 </head>
-<body>
+<body class="easyui-layout">
 	<!-- <form action="http://localhost:8080/mis_web/login" method=post>
 <input type=submit>
 
 </form> -->
-	<input id="test" class="easyui-textbox">
+   <div data-options="region:'center'" style=" font-size:14px;font-family:arial,'幼圆';border:0;background:none;">
+     <header style="background: none; border: none; padding-top: 25px; font-size: 13px; font-family: arial,'幼圆';">
+     <div>
+     <input id="test" class="easyui-textbox">
+     </div>
+
+	</header>
 	<table id="grid_summary_list" class="easyui-datagrid"
 		data-options="collapsible:true"
-		style="border-color: aquamarine; height: 760px; padding-top: 60px;"
+		style="border-color: aquamarine; padding-top: 60px;"
 		UpdateDate" sortOrder="asc" remoteSort="false">
 	</table>
+	</div>
 </body>
 </html>

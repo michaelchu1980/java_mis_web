@@ -11,7 +11,7 @@ import com.mis.common.JSONHelper;
 public class CadlogcontentDAO {
 
 	public static String findCadLog()throws Exception{
-		String sqlStr="select top(100)* from CAD_LOG_ALL_V";
+		String sqlStr="select top(200)* from CAD_LOG_ALL_V";
 		
 	String jsonData=	JSONHelper.RsToJSONString(MssqlHelper.getResultSet(sqlStr));
 		

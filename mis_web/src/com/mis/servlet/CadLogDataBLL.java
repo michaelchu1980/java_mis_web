@@ -34,8 +34,8 @@ public class CadLogDataBLL extends HttpServlet {
 			response.setCharacterEncoding("utf-8");
 			response.setCharacterEncoding("utf-8");
 			response.setContentType("application/json);charset=utf-8");
-			//response.getWriter().write( CadlogcontentDAO.findCadLog());
-			response.getWriter().write( LaborData.GetLaborData());
+			response.getWriter().write( CadlogcontentDAO.findCadLog());
+			//response.getWriter().write( LaborData.GetLaborData());
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
