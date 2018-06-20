@@ -1,10 +1,8 @@
 CREATE DATABASE  IF NOT EXISTS `zgzy` /*!40100 DEFAULT CHARACTER SET utf8 */;
 USE `zgzy`;
-
-
 -- MySQL dump 10.13  Distrib 5.7.17, for Win64 (x86_64)
 --
--- Host: 127.0.0.1    Database: zgzy
+-- Host: localhost    Database: zgzy
 -- ------------------------------------------------------
 -- Server version	5.7.20-log
 
@@ -20,6 +18,52 @@ USE `zgzy`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
+-- Table structure for table `order`
+--
+
+DROP TABLE IF EXISTS `order`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `order` (
+  `order_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` int(10) unsigned NOT NULL DEFAULT '0',
+  `order_no` varchar(16) NOT NULL DEFAULT '',
+  `money` float(10,2) unsigned DEFAULT '0.00',
+  PRIMARY KEY (`order_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `order`
+--
+
+LOCK TABLES `order` WRITE;
+/*!40000 ALTER TABLE `order` DISABLE KEYS */;
+INSERT INTO `order` VALUES (1,1,'1509289090',99.90),(2,1,'1519289091',290.80),(3,1,'1509294321',919.90),(4,1,'1601232190',329.90),(5,1,'1503457384',321.00),(6,1,'1598572382',342.00),(7,1,'1500845727',458.00),(8,1,'1508458923',1200.00),(9,1,'1504538293',2109.00),(10,1,'1932428723',5888.00),(11,1,'2390423712',3219.00),(12,1,'4587923992',123.00),(13,1,'4095378812',421.00),(14,1,'9423890127',678.00),(15,1,'7859213249',7689.00),(16,1,'4598450230',909.20);
+/*!40000 ALTER TABLE `order` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `tbbug`
+--
+
+DROP TABLE IF EXISTS `tbbug`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tbbug` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `UserName` varchar(50) DEFAULT NULL,
+  `UserIp` varchar(50) DEFAULT NULL,
+  `BugInfo` longtext,
+  `BugReply` longtext,
+  `BugDate` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `IfShow` tinyint(1) DEFAULT NULL,
+  `IfSolve` tinyint(1) DEFAULT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Dumping data for table `tbbug`
 --
 
@@ -27,6 +71,25 @@ LOCK TABLES `tbbug` WRITE;
 /*!40000 ALTER TABLE `tbbug` DISABLE KEYS */;
 /*!40000 ALTER TABLE `tbbug` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Table structure for table `tbbutton`
+--
+
+DROP TABLE IF EXISTS `tbbutton`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tbbutton` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `Name` varchar(50) DEFAULT NULL,
+  `Code` varchar(50) DEFAULT NULL,
+  `Icon` varchar(50) DEFAULT NULL,
+  `Sort` int(11) DEFAULT NULL,
+  `AddDate` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `Description` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `tbbutton`
@@ -39,6 +102,23 @@ INSERT INTO `tbbutton` VALUES (1,'浏览','browser','icon-eye',1,'2013-12-04 03:
 UNLOCK TABLES;
 
 --
+-- Table structure for table `tbdepartment`
+--
+
+DROP TABLE IF EXISTS `tbdepartment`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tbdepartment` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `DepartmentName` varchar(50) DEFAULT NULL,
+  `ParentId` int(11) DEFAULT NULL,
+  `Sort` int(11) DEFAULT NULL,
+  `AddDate` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`Id`)
+) ENGINE=InnoDB AUTO_INCREMENT=47 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Dumping data for table `tbdepartment`
 --
 
@@ -47,6 +127,24 @@ LOCK TABLES `tbdepartment` WRITE;
 INSERT INTO `tbdepartment` VALUES (1,'人事行政部',0,3,'2013-10-15 13:55:14'),(2,'研发部',0,1,'2013-10-15 13:55:19'),(3,'技术支持',0,2,'2013-10-15 13:55:27'),(4,'人事部',1,1,'2013-10-15 13:55:28'),(5,'行政部',1,2,'2013-10-15 13:56:04'),(7,'C#组',2,2,'2013-10-15 13:56:18'),(8,'Java组',2,1,'2013-10-15 13:56:22'),(9,'Shell脚本组',2,5,'2013-10-15 13:56:39'),(10,'C/C++组',2,4,'2013-10-15 13:56:46'),(11,'宽带光纤',3,2,'2013-10-15 13:56:57'),(12,'系统运维',3,1,'2013-10-15 13:57:05'),(15,'IT',4,1,'2013-12-11 03:04:14'),(16,'行政1部',5,2,'2013-12-16 02:32:02'),(17,'行政2部',5,1,'2013-12-16 02:32:20'),(41,'销售部',0,4,'2014-01-08 03:09:33'),(43,'销售组',41,1,'2014-01-08 03:10:02'),(46,'PHP组',2,3,'2014-01-08 03:11:21');
 /*!40000 ALTER TABLE `tbdepartment` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Table structure for table `tbloginlog`
+--
+
+DROP TABLE IF EXISTS `tbloginlog`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tbloginlog` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `UserName` varchar(50) DEFAULT NULL,
+  `UserIp` varchar(50) DEFAULT NULL,
+  `City` varchar(50) DEFAULT NULL,
+  `Success` tinyint(1) DEFAULT NULL,
+  `LoginDate` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`Id`)
+) ENGINE=InnoDB AUTO_INCREMENT=96 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `tbloginlog`
@@ -59,6 +157,26 @@ INSERT INTO `tbloginlog` VALUES (1,'admin','::1','广东东莞',1,'2017-04-14 02
 UNLOCK TABLES;
 
 --
+-- Table structure for table `tbmenu`
+--
+
+DROP TABLE IF EXISTS `tbmenu`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tbmenu` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `Name` varchar(50) DEFAULT NULL,
+  `ParentId` int(11) DEFAULT NULL,
+  `Code` varchar(50) DEFAULT NULL,
+  `LinkAddress` varchar(100) DEFAULT NULL,
+  `Icon` varchar(50) DEFAULT NULL,
+  `Sort` int(11) DEFAULT NULL,
+  `AddDate` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`Id`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Dumping data for table `tbmenu`
 --
 
@@ -67,6 +185,31 @@ LOCK TABLES `tbmenu` WRITE;
 INSERT INTO `tbmenu` VALUES (1,'系统设置',0,NULL,NULL,'icon-cog',1,'2013-09-21 06:32:43'),(2,'其他',0,NULL,NULL,'icon-tux',2,'2013-09-21 06:32:43'),(3,'菜单管理',1,'menu','html/ui_menu.html','icon-layout',2,'2013-09-21 06:32:43'),(4,'用户管理',1,'user','html/ui_user.html','icon-user_suit_black',3,'2013-09-21 06:32:43'),(5,'部门管理',1,'department','html/ui_department.html','icon-group',5,'2013-09-21 06:32:43'),(6,'角色管理',1,'role','html/ui_role.html','icon-key_go',4,'2013-09-21 06:32:43'),(7,'按钮管理',1,'button','html/ui_button.html','icon-button',1,'2013-09-21 06:32:43'),(8,'登录日志',2,'loginlog','html/ui_loginlog.html','icon-drive_user',1,'2013-09-21 06:32:43'),(9,'操作日志',2,'operatelog','html/ui_operatelog.html','icon-table',2,'2013-09-21 06:32:43'),(10,'Bug反馈',2,'bugs','html/ui_bugs.html','icon-bug',3,'2013-09-21 06:32:43');
 /*!40000 ALTER TABLE `tbmenu` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Table structure for table `tbmenu_new`
+--
+
+DROP TABLE IF EXISTS `tbmenu_new`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tbmenu_new` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `MODEL` varchar(30) NOT NULL,
+  `Name` varchar(50) DEFAULT NULL,
+  `EN_NAME` varchar(50) DEFAULT NULL,
+  `ParentId` int(11) DEFAULT NULL,
+  `Code` varchar(50) DEFAULT NULL,
+  `LinkAddress` varchar(100) DEFAULT NULL,
+  `Icon` varchar(50) DEFAULT NULL,
+  `Sort` int(11) DEFAULT NULL,
+  `AddDate` datetime(6) DEFAULT NULL,
+  `CREAT_BY` varchar(30) DEFAULT NULL,
+  `MODIFY_DATE` datetime(6) DEFAULT NULL,
+  `MODIFY_BY` varchar(30) DEFAULT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `tbmenu_new`
@@ -79,6 +222,19 @@ INSERT INTO `tbmenu_new` VALUES (1,'sys-manage','系统设置','',0,NULL,NULL,'i
 UNLOCK TABLES;
 
 --
+-- Table structure for table `tbmenubutton`
+--
+
+DROP TABLE IF EXISTS `tbmenubutton`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tbmenubutton` (
+  `MenuId` int(11) DEFAULT NULL,
+  `ButtonId` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Dumping data for table `tbmenubutton`
 --
 
@@ -87,6 +243,23 @@ LOCK TABLES `tbmenubutton` WRITE;
 INSERT INTO `tbmenubutton` VALUES (3,1),(3,3),(3,4),(3,5),(4,1),(4,7),(4,3),(4,4),(4,5),(5,1),(5,3),(5,4),(5,5),(6,1),(6,3),(6,4),(6,5),(7,1),(7,3),(7,4),(7,5),(8,1),(4,8),(8,6),(9,1),(6,9),(3,10),(10,1),(5,11),(10,3),(10,4),(10,6),(5,12);
 /*!40000 ALTER TABLE `tbmenubutton` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Table structure for table `tbrole`
+--
+
+DROP TABLE IF EXISTS `tbrole`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tbrole` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `RoleName` varchar(50) DEFAULT NULL,
+  `Description` varchar(100) DEFAULT NULL,
+  `AddDate` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `ModifyDate` datetime(6) DEFAULT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=InnoDB AUTO_INCREMENT=54 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `tbrole`
@@ -99,6 +272,20 @@ INSERT INTO `tbrole` VALUES (1,'超级管理员','拥有所有增删改查权限
 UNLOCK TABLES;
 
 --
+-- Table structure for table `tbrolemenubutton`
+--
+
+DROP TABLE IF EXISTS `tbrolemenubutton`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tbrolemenubutton` (
+  `RoleId` int(11) DEFAULT NULL,
+  `MenuId` int(11) DEFAULT NULL,
+  `ButtonId` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Dumping data for table `tbrolemenubutton`
 --
 
@@ -107,6 +294,26 @@ LOCK TABLES `tbrolemenubutton` WRITE;
 INSERT INTO `tbrolemenubutton` VALUES (1,3,1),(1,3,3),(1,3,4),(1,3,5),(1,4,1),(1,4,3),(1,4,7),(1,4,4),(1,4,5),(1,5,1),(1,5,3),(1,5,4),(1,5,5),(1,6,1),(1,6,3),(1,6,4),(1,6,5),(1,7,1),(1,7,3),(1,7,4),(1,7,5),(1,8,1),(1,4,8),(1,8,6),(1,9,1),(1,6,9),(1,3,10),(1,10,1),(1,5,11),(1,10,3),(1,10,4),(1,10,6),(52,1,0),(52,9,1),(52,4,1),(52,7,1),(52,3,1),(52,2,0),(52,10,1),(52,5,1),(1,1,0),(1,2,0),(52,6,1),(52,8,1),(1,5,12);
 /*!40000 ALTER TABLE `tbrolemenubutton` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Table structure for table `tbuser`
+--
+
+DROP TABLE IF EXISTS `tbuser`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tbuser` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `UserId` varchar(50) DEFAULT NULL,
+  `UserName` varchar(50) DEFAULT NULL,
+  `UserPwd` varchar(50) DEFAULT NULL,
+  `IsAble` tinyint(1) DEFAULT NULL,
+  `IfChangePwd` tinyint(1) DEFAULT NULL,
+  `AddDate` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  `Description` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`Id`)
+) ENGINE=InnoDB AUTO_INCREMENT=93 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `tbuser`
@@ -119,6 +326,19 @@ INSERT INTO `tbuser` VALUES (72,'admin','adminitrator','21232F297A57A5A743894A0E
 UNLOCK TABLES;
 
 --
+-- Table structure for table `tbuserdepartment`
+--
+
+DROP TABLE IF EXISTS `tbuserdepartment`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tbuserdepartment` (
+  `UserId` int(11) DEFAULT NULL,
+  `DepartmentId` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Dumping data for table `tbuserdepartment`
 --
 
@@ -127,6 +347,25 @@ LOCK TABLES `tbuserdepartment` WRITE;
 INSERT INTO `tbuserdepartment` VALUES (72,15);
 /*!40000 ALTER TABLE `tbuserdepartment` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Table structure for table `tbuseroperatelog`
+--
+
+DROP TABLE IF EXISTS `tbuseroperatelog`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tbuseroperatelog` (
+  `Id` int(11) NOT NULL AUTO_INCREMENT,
+  `UserName` varchar(50) DEFAULT NULL,
+  `UserIp` varchar(50) DEFAULT NULL,
+  `OperateInfo` varchar(64) DEFAULT NULL,
+  `Description` longtext,
+  `IfSuccess` tinyint(1) DEFAULT NULL,
+  `OperateDate` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`Id`)
+) ENGINE=InnoDB AUTO_INCREMENT=256 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `tbuseroperatelog`
@@ -139,6 +378,19 @@ INSERT INTO `tbuseroperatelog` VALUES (1,NULL,'::1','菜单功能异常','Object
 UNLOCK TABLES;
 
 --
+-- Table structure for table `tbuserrole`
+--
+
+DROP TABLE IF EXISTS `tbuserrole`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `tbuserrole` (
+  `UserId` int(11) DEFAULT NULL,
+  `RoleId` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
 -- Dumping data for table `tbuserrole`
 --
 
@@ -149,91 +401,29 @@ INSERT INTO `tbuserrole` VALUES (74,52),(72,1),(76,1),(92,53);
 UNLOCK TABLES;
 
 --
--- Dumping events for database 'zgzy'
+-- Table structure for table `user`
 --
 
+DROP TABLE IF EXISTS `user`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `user` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `username` varchar(64) NOT NULL DEFAULT '',
+  `mobile` varchar(16) NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
 --
--- Dumping routines for database 'zgzy'
+-- Dumping data for table `user`
 --
-/*!50003 DROP PROCEDURE IF EXISTS `pr_pager` */;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8 */ ;
-/*!50003 SET character_set_results = utf8 */ ;
-/*!50003 SET collation_connection  = utf8_general_ci */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
-DELIMITER ;;
-CREATE DEFINER=`root`@`localhost` PROCEDURE `pr_pager`(
 
-    IN    p_table_name        VARCHAR(1024),        
-    IN    p_fields            VARCHAR(1024),        
-    IN    p_page_size            INT,                
-    IN    p_page_now            INT,                
-    IN    p_order_string        VARCHAR(128),        
-    IN    p_where_string        VARCHAR(1024),        
-     OUT    p_out_rows            INT                    
-
-)
-    COMMENT '分页存储过程'
-BEGIN
-
-
-    DECLARE m_begin_row INT DEFAULT 0;
-    DECLARE m_limit_string CHAR(64);
-
-
-    SET m_begin_row = (p_page_now - 1) * p_page_size;
-    SET m_limit_string = CONCAT(' LIMIT ', m_begin_row, ', ', p_page_size);
-
-    SET @COUNT_STRING = CONCAT('SELECT COUNT(*) INTO @ROWS_TOTAL FROM ', p_table_name, ' ', p_where_string);
-    SET @MAIN_STRING = CONCAT('SELECT ', p_fields, ' FROM ', p_table_name, ' ', p_where_string, ' ', p_order_string,m_limit_string);
-
-
-    PREPARE count_stmt FROM @COUNT_STRING;
-    EXECUTE count_stmt;
-    DEALLOCATE PREPARE count_stmt;
-    SET p_out_rows = @ROWS_TOTAL;
-
-    PREPARE main_stmt FROM @MAIN_STRING;
-    EXECUTE main_stmt;
-    DEALLOCATE PREPARE main_stmt;
-
-END ;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
-/*!50003 DROP PROCEDURE IF EXISTS `sp_checklogin` */;
-/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
-/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
-/*!50003 SET @saved_col_connection = @@collation_connection */ ;
-/*!50003 SET character_set_client  = utf8 */ ;
-/*!50003 SET character_set_results = utf8 */ ;
-/*!50003 SET collation_connection  = utf8_general_ci */ ;
-/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
-/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
-DELIMITER ;;
-CREATE DEFINER=`michael`@`%` PROCEDURE `sp_checklogin`(IN ip nvarchar(50),OUT lastErrorLoginTime datetime )
-BEGIN
-declare errorLoginCount int;
-select errorLoginCount = Count(1) from tbLoginLog where Success = 0 and DATE_ADD(LoginDate,INTERVAL 30 minute) > NOW() and UserIp = ip;
-if errorLoginCount>=5 then
- 
- select  lastErrorLoginTime = T.LoginDate 
- from (select  LoginDate from tbLoginLog where UserIp = ip order by LoginDate desc limit 0,5 ) T order by LoginDate asc limit 0,1;  
-else 
- set lastErrorLoginTime = null ; 
-end if;
-
-END ;;
-DELIMITER ;
-/*!50003 SET sql_mode              = @saved_sql_mode */ ;
-/*!50003 SET character_set_client  = @saved_cs_client */ ;
-/*!50003 SET character_set_results = @saved_cs_results */ ;
-/*!50003 SET collation_connection  = @saved_col_connection */ ;
+LOCK TABLES `user` WRITE;
+/*!40000 ALTER TABLE `user` DISABLE KEYS */;
+INSERT INTO `user` VALUES (1,'yiibai','13838009988'),(2,'saya','13838009988');
+/*!40000 ALTER TABLE `user` ENABLE KEYS */;
+UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -244,4 +434,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-02-09 16:11:33
+-- Dump completed on 2018-06-19 19:43:59
